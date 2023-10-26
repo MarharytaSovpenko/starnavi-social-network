@@ -58,7 +58,7 @@ MIDDLEWARE = [
     "user.custom_middleware.SetLastRequestMiddleware"
 ]
 
-ROOT_URLCONF = "starnavi_blog.urls"
+ROOT_URLCONF = "starnavi_blog_service.urls"
 
 TEMPLATES = [
     {
@@ -149,7 +149,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "STARNAVI_BLOG Service API",
+    "TITLE": "STARNAVI BLOG Service API",
     "DESCRIPTION": "API for social network",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
