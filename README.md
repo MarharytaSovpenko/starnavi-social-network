@@ -11,6 +11,7 @@ An API service for social network written with DRF
 - Monitoring of user activity: displays when a user last logged in and when they made their last request to the service.
 - Creation of posts
 - Liking and unliking
+- Post analytics on likes: show how many likes were made in the specific time limited by date_from and date_to in url.
 - A custom command to start the Docker app only when the database is available
 - Custom middleware to trace the user's last interaction with service
 
@@ -43,6 +44,8 @@ go to `127.0.0.1:8000/api/doc/swagger/`
 - Create a new user via /api/user/register/
 - Obtain a user token via /api/user/token/
 - Install the ModHeader extension and create a request header with the value "Bearer <Your access token>"
+- Be sure to provide post id, date_to and date_from in URL to see analytics on  a specific post. Example url: 
+   `api/blog/posts/1/analytics_on_likes/?date_from=2023-10-01&date_to=2023-10-15`
 
 ##  Automated Bot
 

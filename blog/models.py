@@ -17,7 +17,10 @@ class Post(models.Model):
     )
     title = models.CharField(max_length=125, unique=True)
     likes = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, blank=True, related_name="liked_posts"
+        settings.AUTH_USER_MODEL,
+        blank=True,
+        related_name="liked_posts",
+        through="LikeDate",
     )
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -28,3 +31,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class LikeDate(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET(get_anonymous_user)
+    )
+    date_of_like = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey("Post", on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("author", "post")
